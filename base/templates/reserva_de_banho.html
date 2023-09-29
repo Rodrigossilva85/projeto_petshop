@@ -1,0 +1,35 @@
+<main>
+
+    {% extends "inicio.html" %}
+    {% block principal %}
+  
+    <div class='container'>
+      <h1 claas="text-center">
+        Reserve aqui o Banho do seu Pet
+      </h1>  
+      
+      {% if sucesso %}
+      
+      <div class="alert alert-success" role="alert">
+          Reserva foi enviada com sucesso!
+      </div>
+      {% else %}
+      <form method ="post" novalidate>
+        {%csrf_token%}
+        {% load bootstrap5 %}
+        {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Reserva</button>
+          </form>
+          
+        {% endif %}   
+        
+      </div>    
+    {% endblock %}        
+    </body>    
+      
+    </html>       
+  </main>
+    
+          
+          
+      

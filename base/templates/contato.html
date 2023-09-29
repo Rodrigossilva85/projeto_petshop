@@ -1,0 +1,34 @@
+<main>
+
+  {% extends "inicio.html" %}
+  {% block principal %}
+
+  <div class='container'>
+    
+    <p>
+      envie uma mensagem ou entre em contato com o nosso representente: {{Nome|upper}} - {{Telefone}}
+    </p>
+    {% if sucesso %}
+    <div class="alert alert-success" role="alert">
+      Sua mensagem foi enviada com sucesso!
+    </div>
+    {% else %}
+    <form method ="post" novalidate>
+      {%csrf_token%}
+      {% load bootstrap5 %}
+      {% bootstrap_form form %}
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        
+      {% endif %}   
+      
+    </div>    
+  {% endblock %}        
+  </body>    
+    
+  </html>       
+</main>
+  
+        
+        
+    
