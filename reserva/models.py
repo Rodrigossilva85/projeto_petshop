@@ -29,10 +29,15 @@ class reservadebanho(models.Model):
         verbose_name= 'Formulário de Reserva de Banho'
         verbose_name_plural= ' Formulários de Reservas de Banhos'
 
+    def __str__(self):
+        return f"Nome do pet: {self.nomedopet} - Dia da reserva: {self.diadareserva} - Turno: {self.turno}"    
+
 class Petshop(models.Model):
     nome= models.CharField(verbose_name="nome do petshop", max_length=50)
     endereco= models.CharField(verbose_name='Endereço', max_length=50)
     telefone= models.CharField(verbose_name='Telefone',max_length=15)
     def __str__(self):
         return f'Loja: {self.nome} - Endereço: {self.endereco} - Telefone: {self.telefone}'
-
+    
+    def quantidade_reservas(self):
+        return self.reservas.count()

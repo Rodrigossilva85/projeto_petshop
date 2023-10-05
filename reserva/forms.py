@@ -17,14 +17,15 @@ class ReservadebanhoForm(forms.ModelForm):
     def clean_diadareserva(self):
         diadareservaselecionada= self.cleaned_data['diadareserva']
         hoje= date.today()
+        print("diadareserva", diadareservaselecionada)
 
         if diadareservaselecionada < hoje:
-            raise forms.ValidationError('Não é possivél reservar para uma data no Passado!')
+            raise forms.ValidationError('Nao e possivel reservar para uma data no Passado!')
         
         quantidadedereservasparaodiaselecionado= reservadebanho.objects.filter(diadareserva= diadareservaselecionada).count()
 
         if quantidadedereservasparaodiaselecionado>=4:
 
-            raise forms.ValidationError('O Limite Máximo de reservas para este dia já foi atingido. escolha outra data. ')
+            raise forms.ValidationError('O Limite Maximo de reservas para este dia ja foi atingido. escolha outra data.')
 
         return diadareservaselecionada      
