@@ -1,16 +1,17 @@
 from django.shortcuts import render
 
 from base.models import Contato
-from rest_api.serializers import AgendamentoModelserializer, contatoModelSerializer
-from reserva.models import reservadebanho
+from rest_api.serializers import AgendamentoModelserializer, contatoModelSerializer,PetshopModelSerializer
+from reserva.models import reservadebanho, Petshop
+
 
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from reserva.models import Petshop
-from rest_api.serializers import PetshopModelSerializer
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
+
+
 
 
 
