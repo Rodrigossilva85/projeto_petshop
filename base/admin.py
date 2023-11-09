@@ -11,14 +11,14 @@ from base.models import Contato
 def marcar_como_lido(modeladmin,request,queryset):
 
     queryset.update(lido=True)
-    modeladmin.message_user( request,'Os formulários de contatos foram marcados como lido!', messages)
+    modeladmin.message_user( request,'Os formulários de contatos foram marcados como lido!', messages.SUCCESS)
 
 
 @admin.action(description='Marcar formulário de contatos selecionados como não lido')
 def marcar_como_nao_lido(modeladmin,request,queryset):
 
     queryset.update(lido= False)
-    modeladmin.message_user( request,'Os formulários de contatos foram marcados como não lido!', messages)
+    modeladmin.message_user( request,'Os formulários de contatos foram marcados como não lido!', messages.SUCCESS)
 
 @admin.register(Contato)
 class contatoadmin(admin.ModelAdmin):
