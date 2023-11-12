@@ -82,7 +82,7 @@ def test_obter_petshop_lista_vazia():
 def test_obter_petshops_com_1_elemento(dados_agendamento_invalido):
     client = APIClient()
     
-    resposta = client.get('/api/Petshop/')
+    resposta = client.get('/api/Petshop/', dados_agendamento_invalido)
 
     assert len(resposta.data['results']) == 1
 
